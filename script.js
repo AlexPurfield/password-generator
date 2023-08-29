@@ -14,15 +14,16 @@ var generateBtn = document.querySelector("#generate"); //STORING A REFERENCE TO 
 // Write password to the #password input
 
 function generatePassword() {
-    var userCharsLength = prompt ("How many characters would you like your passworkd to contain?");   
+    var userCharsLength = prompt ("How many characters would you like your passworkd to contain?");  
     if (userCharsLength < 8 || userCharsLength > 128) {
-        alert("please enter number between 8 and 128 ");
-    } else { userCharsLength}
-    console.log (userCharsLength);
+        alert("please enter number between 8 and 128 "); console.log(userCharsLength);
+    } //else { return userLengthValue;}
+    //console.log (userCharsLength);
     //users input on length - numeric value 
 
-    var specialCharacters = confirm ("Click ok to confirm special characters");
-    console.log (specialCharacters); //users input on whether they want special characters- boolean value
+    var specialCharacters = confirm ("Click ok to confirm special characters"); {}
+    console.log (specialCharacters);
+    //users input on whether they want special characters- boolean value
 
     var numericCharacters = confirm ("Click ok to confirm numeric characters");
     console.log (numericCharacters); //users input on whether they want numbers- boolean value
@@ -40,42 +41,31 @@ function generatePassword() {
         willHaveNumericChars: numericCharacters,
         willHaveLowerChars: lowercaseCharacters,
         willHaveUpperChars: uppercaseCharacters,
-    };
-
-    if (userOptions.willHaveSpecialChars===true) {
-        //randomly grab member from the special characters array
-        //push into results array 
-        var specChar = Math.floor(Math.random() * specialChars.length);
-        var specChoice = specialChars[specChar]; 
-        console.log(specChoice);
-    } ;
-
-    if (userOptions.willHaveNumericChars===true) {
-    var NumChar = Math.floor(Math.random() * numericChars.length);
-    var NumChoice = numericChars[NumChar];
-    console.log(NumChoice);
-
+    }; 
+    var userOptionsArray = [];
+    if (userOptions.willHaveSpecialChars) {
+        userOptionsArray = userOptionsArray.concat(specialChars);
+    }   
+    if (userOptions.willHaveNumericChars) {
+        userOptionsArray=userOptionsArray.concat(numericChars);
     }
-
-    if (userOptions.willHaveLowerChars===true) {
-        var LowChar = Math.floor(Math.random() * lowerCaseChars.length);
-        var LowChoice = lowerCaseChars[LowChar];
-        console.log (LowChoice);
-
+    if (userOptions.willHaveLowerChars) {
+        userOptionsArray=userOptionsArray.concat(lowerCaseChars);
     }
-
-    if (userOptions.willHaveUpperChars===true) {
-        var UppChar = Math.floor(Math.random() * upperCaseChars.length);
-        var UppChoice = upperCaseChars[UppChar];
-        console.log(UppChoice); 
-
+    if (userOptions.willHaveUpperChars) {
+        userOptionsArray=userOptionsArray.concat(upperCaseChars);
     }
+   
+    
+    for (var i = 0; i < userOptions.length; i++) {
+        //var combineRandom = Math.floor(Math.random() * userOptions.length);
+         var randomChoose = Math.floor(Math.random() * userOptionsArray.length);
+         var Prettyplease = userOptionsArray[randomChoose]; 
+return}}
+    
 //eventually this array below will store the random generated password. will use push method to add to this array and this is what will return to user
-    var result = specialChars.push(specChoice);
-    console.log (result);
-
  
-} 
+
 
 function writePassword() {
   var password = generatePassword();
@@ -88,4 +78,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);      
+generateBtn.addEventListener("click", writePassword);     
