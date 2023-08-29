@@ -14,24 +14,28 @@ var generateBtn = document.querySelector("#generate"); //STORING A REFERENCE TO 
 // Write password to the #password input
 
 function generatePassword() {
-    var userCharsLenth = prompt ("How many characters would you like your passworkd to contain?");
-    //console.log (userCharsLenth); //users input on length - numeric value 
+    var userCharsLength = prompt ("How many characters would you like your passworkd to contain?");   
+    if (userCharsLength < 8 || userCharsLength > 128) {
+        alert("please enter number between 8 and 128 ");
+    } else { userCharsLength}
+    console.log (userCharsLength);
+    //users input on length - numeric value 
 
     var specialCharacters = confirm ("Click ok to confirm special characters");
-    //console.log (specialCharacters); //users input on whether they want special characters- boolean value
+    console.log (specialCharacters); //users input on whether they want special characters- boolean value
 
     var numericCharacters = confirm ("Click ok to confirm numeric characters");
-    //console.log (numericCharacters); //users input on whether they want numbers- boolean value
+    console.log (numericCharacters); //users input on whether they want numbers- boolean value
     
     var lowercaseCharacters = confirm ("Click ok to confirm lowercase characters");
-    //console.log (lowercaseCharacters); //users input on whether they want lowercase- boolean value
+    console.log (lowercaseCharacters); //users input on whether they want lowercase- boolean value
 
     var uppercaseCharacters = confirm ("Click ok to confirm uppercase characters");
-    //console.log (uppercaseCharacters); // users input on whether they want uppercase- boolean value
+    console.log (uppercaseCharacters); // users input on whether they want uppercase- boolean value
 
     //create object for user options
     var userOptions = {
-        length: userCharsLenth, 
+        length: userCharsLength, 
         willHaveSpecialChars: specialCharacters,
         willHaveNumericChars: numericCharacters,
         willHaveLowerChars: lowercaseCharacters,
@@ -44,7 +48,7 @@ function generatePassword() {
         var specChar = Math.floor(Math.random() * specialChars.length);
         var specChoice = specialChars[specChar]; 
         console.log(specChoice);
-    }
+    } ;
 
     if (userOptions.willHaveNumericChars===true) {
     var NumChar = Math.floor(Math.random() * numericChars.length);
@@ -66,15 +70,18 @@ function generatePassword() {
         console.log(UppChoice); 
 
     }
-//eventually this array below will store the4 random generated password. will use push methodr to add to this array and this is what will return to user
-    var result = [specChoice, NumChoice , LowChoice, UppChoice ];
+//eventually this array below will store the random generated password. will use push method to add to this array and this is what will return to user
+    var result = specialChars.push(specChoice);
     console.log (result);
 
+ 
 } 
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password"); //storing a reference to the textarea element
+
+
 
   passwordText.value = password; //displays generated password to user 
 
