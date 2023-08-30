@@ -60,22 +60,23 @@ function generatePassword() {
     for (var i = 0; i < userOptions.length; i++) {
         //var combineRandom = Math.floor(Math.random() * userOptions.length);
          var randomChoose = Math.floor(Math.random() * userOptionsArray.length);
-         var Prettyplease = userOptionsArray[randomChoose]; 
-return}}
+         var randomChooseFin = userOptionsArray[randomChoose]; console.log (randomChooseFin);
+         window.alert("Your random password is " + randomChooseFin + ".");
+}}
     
 //eventually this array below will store the random generated password. will use push method to add to this array and this is what will return to user
- 
 
 
-function writePassword() {
+
+//function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password"); //storing a reference to the textarea element
+//console.log (passwordText);
 
 
+ // passwordText.value = password; //displays generated password to user 
 
-  passwordText.value = password; //displays generated password to user 
-
-}
+//}
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);     
+//generateBtn.addEventListener("click", writePassword);     
